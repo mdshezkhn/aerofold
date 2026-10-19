@@ -1,0 +1,980 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AEROFOLD — We Fold Matter Into Motion for the Unexpected</title>
+<meta name="description" content="AEROFOLD is an experimental collective shaping folded paper, sculpture, and kinetic installations into vivid spatial experiences.">
+<script>
+(function () {
+  var d = document.documentElement;
+  d.classList.add("js-entrance");
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    d.classList.remove("js-entrance");
+  }
+})();
+</script>
+<style>
+@font-face {
+  font-family:'InterV';
+  src:url(assets/aerofold-inter-variable.woff2) format('woff2'),
+      url('https://rsms.me/inter/font-files/InterVariable.woff2' ) format('woff2');
+  font-weight:100 900;
+  font-style:normal;
+  font-display:block;
+}
+@property --u { syntax:"<length>"; inherits:true; initial-value:1px; }
+:root {
+  --w-display:400;
+  --w-body:400;
+  --w-brand:535;
+  --w-nav:515;
+  --w-action:620;
+  --w-chip:420;
+  --w-caption:400;
+  --e-reveal:cubic-bezier(.16,1,.3,1);
+  --e-settle:cubic-bezier(.22,1,.36,1);
+}
+
+/* ------------------------------------------------------------ global reset */
+*, *::before, *::after { box-sizing:border-box; }
+* { margin:0; padding:0; }
+h1, h2, p { margin:0; }
+html { scroll-behavior:smooth; }
+body {
+  background:#0b8ed2;
+  color:#fff;
+  overflow-x:hidden;
+  font-family:'InterV', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
+  font-optical-sizing:none;
+  font-variation-settings:"opsz" 32;
+  font-synthesis:none;
+}
+a { color:inherit; text-decoration:none; }
+button {
+  font:inherit;
+  color:inherit;
+  background:none;
+  border:0;
+  padding:0;
+  cursor:pointer;
+}
+
+/* ----------------------------------------------------------- hero section */
+.hero-section {
+  position:relative;
+  height:100dvh;
+  overflow:hidden;
+  isolation:isolate;
+  font-size:min(max(calc(100vw / 14.4),calc(100svh / 8.62)),calc(100svh / 6.8),175px);
+  --u:.01em;
+}
+.hero-section [hidden] { display:none !important; }
+.hero-section a:focus-visible,
+.hero-section button:focus-visible {
+  outline:calc(2 * var(--u)) solid #fff;
+  outline-offset:calc(5 * var(--u));
+}
+
+/* background ------------------------------------------------------------- */
+.hero-section__bg {
+  position:absolute;
+  inset:0;
+  z-index:0;
+  overflow:hidden;
+  background:#0b8ed2;
+}
+.hero-section .hero-section__bg::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url(assets/aerofold-paper-bloom-poster.png) 50% 50% / cover no-repeat;
+}
+.hero-section__bg video {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:50% 50%;
+  opacity:0;
+  transition:opacity .5s ease;
+}
+.hero-section__bg.is-playing video { opacity:1; }
+
+/* stage ------------------------------------------------------------------- */
+.stage {
+  position:absolute;
+  inset:0;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  padding:calc(30.96*var(--u)) calc(32*var(--u)) calc(114.82*var(--u));
+}
+.stage > header.head,
+.stage > section.hero,
+.stage > footer.partners { flex-shrink:0; }
+.stage > span.vsp {
+  flex-basis:0;
+  min-width:0;
+  min-height:calc(16*var(--u));
+}
+.stage > span.vsp.vsp-a { flex-grow:2.4467; }
+.stage > span.vsp.vsp-b { flex-grow:1; }
+
+/* header ------------------------------------------------------------------ */
+.hero-section .head {
+  height:calc(41.76*var(--u));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.hero-section .logo {
+  display:flex;
+  align-items:center;
+  gap:calc(9.46*var(--u));
+  position:relative;
+  top:calc(0.28*var(--u));
+  white-space:nowrap;
+  font-size:calc(21.2*var(--u));
+  font-weight:var(--w-brand);
+  line-height:1;
+  letter-spacing:-.004em;
+}
+.hero-section .logo-mark {
+  display:block;
+  width:calc(20*var(--u));
+  height:calc(20*var(--u));
+  flex:none;
+}
+.hero-section .sp {
+  display:block;
+  min-width:calc(12*var(--u));
+  flex-basis:0;
+  height:1px;
+}
+.hero-section .sp.sp-a { flex-grow:1.5563; }
+.hero-section .sp.sp-b { flex-grow:1; }
+.hero-section #nav {
+  display:flex;
+  align-items:center;
+  gap:calc(23.9*var(--u));
+  white-space:nowrap;
+  font-size:calc(15.75*var(--u));
+  font-weight:var(--w-nav);
+}
+.hero-section #nav a {
+  opacity:1;
+  transition:opacity .18s ease;
+}
+.hero-section #nav a:hover { opacity:.74; }
+.hero-section .head-cta {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:calc(189.72*var(--u));
+  height:calc(41.76*var(--u));
+  border-radius:calc(20.88*var(--u));
+  background:#fff;
+  color:#000;
+  font-size:calc(16*var(--u));
+  font-weight:var(--w-action);
+  letter-spacing:-.024em;
+  white-space:nowrap;
+  box-shadow:0 1px 2px rgba(3,58,92,.10);
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.hero-section .head-cta:hover {
+  transform:translateY(-1px);
+  box-shadow:0 6px 18px rgba(3,58,92,.20);
+}
+.hero-section #menuBtn { display:none; }
+
+/* hero copy ---------------------------------------------------------------- */
+.hero-section .hero {
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+.hero-section .badge {
+  position:relative;
+  width:calc(291.06*var(--u));
+  height:calc(23.94*var(--u));
+  border-radius:calc(11.97*var(--u));
+  background:rgba(255,255,255,.18);
+  -webkit-backdrop-filter:blur(10px) saturate(115%);
+  backdrop-filter:blur(10px) saturate(115%);
+}
+.hero-section .badge::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  padding:1px;
+  background:linear-gradient(155deg,
+    rgba(112,242,255,.98) 0%,
+    rgba(104,234,255,.95) 42%,
+    rgba(87,218,255,.88) 100%);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  mask-composite:exclude;
+  pointer-events:none;
+}
+.hero-section .badge .chip {
+  position:absolute;
+  left:calc(4.14*var(--u));
+  top:calc(3.7*var(--u));
+  width:calc(41.76*var(--u));
+  height:calc(16.6*var(--u));
+  border-radius:calc(8.3*var(--u));
+  background:#fff;
+  color:#1591d6;
+  font-size:calc(11.95*var(--u));
+  font-weight:var(--w-chip);
+  line-height:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.hero-section .badge .badge-text {
+  position:absolute;
+  left:calc(53.3*var(--u));
+  top:0;
+  height:100%;
+  display:flex;
+  align-items:center;
+  font-size:calc(12.75*var(--u));
+  font-weight:var(--w-body);
+  letter-spacing:.001em;
+  color:rgba(255,255,255,.96);
+  white-space:nowrap;
+}
+.hero-section h1#hero-title {
+  width:min(calc(800*var(--u)),100%);
+  margin-top:calc(23.62*var(--u));
+  font-size:calc(64*var(--u));
+  line-height:calc(70*var(--u));
+  font-weight:var(--w-display);
+  letter-spacing:-.02em;
+}
+.hero-section h1 .ln {
+  display:block;
+  overflow:clip;
+  overflow-clip-margin:calc(6*var(--u));
+  white-space:nowrap;
+}
+.hero-section h1 .ln-i { display:block; }
+.hero-section .lede {
+  width:min(calc(478*var(--u)),100%);
+  margin-top:calc(5.49*var(--u));
+  font-size:calc(16*var(--u));
+  line-height:calc(17.9*var(--u));
+  letter-spacing:-.015em;
+  color:#fff;
+}
+.hero-section .actions {
+  display:flex;
+  margin-top:calc(23.27*var(--u));
+  gap:calc(16.2*var(--u));
+}
+.hero-section .action {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height:calc(41.76*var(--u));
+  border-radius:calc(20.88*var(--u));
+  font-size:calc(16*var(--u));
+  font-weight:var(--w-action);
+  letter-spacing:-.026em;
+  white-space:nowrap;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.hero-section .action:hover { transform:translateY(-1px); }
+.hero-section .action.action-light {
+  width:calc(140.94*var(--u));
+  background:#fff;
+  color:#000;
+  box-shadow:0 1px 2px rgba(3,58,92,.10);
+}
+.hero-section .action.action-light:hover { box-shadow:0 6px 18px rgba(3,58,92,.20); }
+.hero-section .action.action-dark {
+  width:calc(124.74*var(--u));
+  background:#000;
+  color:#fff;
+  box-shadow:0 1px 2px rgba(0,0,0,.16);
+}
+.hero-section .action.action-dark:hover { box-shadow:0 6px 18px rgba(0,0,0,.26); }
+
+/* collaborators ------------------------------------------------------------ */
+.hero-section .partner-label {
+  font-size:calc(12.6*var(--u));
+  font-weight:var(--w-caption);
+  line-height:1.2;
+  letter-spacing:.0005em;
+  color:rgba(255,255,255,.86);
+}
+.hero-section .plogos {
+  display:flex;
+  align-items:flex-start;
+  margin:calc(16.91*var(--u)) 0 0 .calc(45*var(--u));
+  color:rgba(193,238,255,.9);
+}
+.hero-section .plogos img,
+.hero-section .plogos .pl {
+  display:block;
+  width:auto;
+  opacity:.9;
+  flex-shrink:1;
+  min-width:0;
+  object-fit:contain;
+  aspect-ratio:1584 / 672;
+}
+.hero-section .plogos img { margin-bottom:0; }
+.hero-section .plogos .pl-img-1 { height:calc(50.97*var(--u)); margin:-calc(11.83*var(--u)) calc(22.48*var(--u)) 0 -calc(10.62*var(--u)); }
+.hero-section .plogos .pl-img-2 { height:calc(51.61*var(--u)); margin:-calc(11.81*var(--u)) calc(20.10*var(--u)) 0 -calc(11.98*var(--u)); }
+.hero-section .plogos .pl-img-3 { height:calc(49.80*var(--u)); margin:-calc(11.40*var(--u)) calc(23.31*var(--u)) 0 -calc(8.45*var(--u)); }
+.hero-section .plogos .pl-img-4 { height:calc(54.53*var(--u)); margin:-calc(13.48*var(--u)) -calc(13.79*var(--u)) 0 -calc(13.15*var(--u)); }
+.hero-section .plogos .pl {
+  flex-direction:row;
+  align-items:center;
+  justify-content:center;
+  gap:calc(5*var(--u));
+  font-size:calc(12*var(--u));
+  line-height:1.05;
+  font-weight:var(--w-nav);
+  white-space:nowrap;
+}
+.hero-section .plogos .pl svg {
+  width:calc(22*var(--u));
+  height:calc(22*var(--u));
+  flex:none;
+}
+
+/* preview dialog ------------------------------------------------------------ */
+.hero-section .preview-dialog {
+  position:fixed;
+  inset:0;
+  margin:auto;
+  width:min(calc(480*var(--u)), calc(100vw - (40*var(--u))));
+  max-height:calc(100dvh - (40*var(--u)));
+  padding:calc(32*var(--u));
+  border-radius:calc(24*var(--u));
+  border:1px solid rgba(150,240,255,.65);
+  background:rgba(5,75,120,.97);
+  color:#fff;
+  box-shadow:0 24px 80px rgba(0,30,60,.30);
+  font-size:calc(16*var(--u));
+  line-height:1.5;
+  overscroll-behavior:contain;
+}
+.hero-section .preview-dialog::backdrop {
+  background:rgba(0,27,47,.42);
+  -webkit-backdrop-filter:blur(8px);
+  backdrop-filter:blur(8px);
+}
+.hero-section .dialog-eyebrow {
+  font-size:calc(11*var(--u));
+  letter-spacing:.12em;
+  color:#b9edff;
+  margin-bottom:calc(16*var(--u));
+}
+.hero-section .preview-dialog h2 {
+  font-size:calc(30*var(--u));
+  line-height:1.1;
+  font-weight:400;
+  letter-spacing:-.02em;
+}
+.hero-section .dialog-body { margin-top:calc(18*var(--u)); }
+.hero-section .dialog-body ul {
+  list-style:disc;
+  padding-left:calc(20*var(--u));
+  margin:0;
+}
+.hero-section .dialog-body li + li { margin-top:calc(10*var(--u)); }
+.hero-section .dialog-close {
+  margin-top:calc(26*var(--u));
+  border-radius:calc(24*var(--u));
+  padding:calc(11*var(--u)) calc(26*var(--u));
+  background:#fff;
+  color:#000;
+  font-weight:var(--w-action);
+}
+
+/* ============================================================ portrait ==== */
+@media (max-aspect-ratio:1/1) {
+  .hero-section {
+    font-size:min(calc(100vw / 3.9),calc((100vw + 780px) / 11.7),calc(100svh / 4.70));
+    --u:.01em;
+  }
+  .hero-section .stage { padding:calc(22*var(--u)) calc(20*var(--u)) calc(26*var(--u)); }
+  .hero-section .stage > span.vsp { min-height:calc(10*var(--u)); }
+  .hero-section .stage > span.vsp.vsp-a { flex-grow:3; }
+  .hero-section .stage > span.vsp.vsp-b { flex-grow:1; }
+
+  .hero-section .head { height:calc(40*var(--u)); justify-content:space-between; }
+  .hero-section .logo { gap:calc(9*var(--u)); top:0; }
+  .hero-section .logo-mark { width:calc(22*var(--u)); height:calc(22*var(--u)); }
+  .hero-section .sp { display:none; }
+  .hero-section #nav { display:none; }
+  .hero-section .head-cta { display:none; }
+  .hero-section #menuBtn {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:calc(40*var(--u));
+    height:calc(40*var(--u));
+    flex:none;
+    border-radius:50%;
+    background:rgba(255,255,255,.18);
+    -webkit-backdrop-filter:blur(10px);
+    backdrop-filter:blur(10px);
+    box-shadow:inset 0 0 0 1px rgba(150,240,255,.6);
+  }
+  .hero-section #menuBtn svg { display:block; width:calc(17*var(--u)); height:calc(12*var(--u)); }
+
+  .hero-section #nav.open {
+    display:flex;
+    flex-direction:column;
+    position:absolute;
+    left:calc(20*var(--u));
+    right:calc(20*var(--u));
+    top:calc(66*var(--u));
+    padding:calc(8*var(--u));
+    border-radius:calc(16*var(--u));
+    gap:0;
+    background:rgba(255,255,255,.16);
+    -webkit-backdrop-filter:blur(16px) saturate(120%);
+    backdrop-filter:blur(16px) saturate(120%);
+    box-shadow:0 12px 34px rgba(3,58,92,.22);
+    z-index:5;
+    white-space:normal;
+  }
+  .hero-section #nav.open::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:inherit;
+    padding:1px;
+    background:linear-gradient(155deg,
+      rgba(112,242,255,.98) 0%,
+      rgba(104,234,255,.95) 42%,
+      rgba(87,218,255,.88) 100%);
+    -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor;
+    mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+    mask-composite:exclude;
+    pointer-events:none;
+  }
+  .hero-section #nav.open a {
+    padding:calc(11*var(--u)) calc(12*var(--u));
+    border-radius:calc(10*var(--u));
+  }
+  .hero-section #nav.open a:hover { background:rgba(255,255,255,.1); }
+
+  .hero-section .badge {
+    position:relative;
+    display:flex;
+    align-items:center;
+    width:fit-content;
+    max-width:100%;
+    height:calc(28*var(--u));
+    border-radius:calc(14*var(--u));
+    padding:0 calc(12*var(--u)) 0 calc(4*var(--u));
+    gap:calc(8*var(--u));
+  }
+  .hero-section .badge .chip {
+    position:static;
+    width:auto;
+    height:calc(20*var(--u));
+    border-radius:calc(10*var(--u));
+    padding:0 calc(9*var(--u));
+    flex:none;
+    font-size:calc(12*var(--u));
+  }
+  .hero-section .badge .badge-text {
+    position:static;
+    height:auto;
+    font-size:calc(12.5*var(--u));
+    white-space:nowrap;
+  }
+
+  .hero-section h1#hero-title {
+    width:calc(344*var(--u));
+    margin-top:calc(18*var(--u));
+    font-size:calc(34*var(--u));
+    line-height:calc(36.7*var(--u));
+    letter-spacing:-.022em;
+  }
+  .hero-section h1 .ln,
+  .hero-section h1 .ln-i {
+    display:inline;
+    overflow:visible;
+    white-space:normal;
+  }
+  .hero-section .lede {
+    width:calc(350*var(--u));
+    margin-top:calc(14*var(--u));
+    font-size:calc(15*var(--u));
+    line-height:calc(21.75*var(--u));
+    color:rgba(255,255,255,.95);
+  }
+  .hero-section .actions { margin-top:calc(22*var(--u)); gap:calc(12*var(--u)); }
+  .hero-section .action {
+    height:calc(46*var(--u));
+    border-radius:calc(23*var(--u));
+    font-size:calc(15.5*var(--u));
+    padding:0 calc(26*var(--u));
+    width:auto;
+  }
+  .hero-section .action.action-light,
+  .hero-section .action.action-dark { width:auto; padding:0 calc(26*var(--u)); }
+
+  .hero-section .plogos {
+    margin:calc(14*var(--u)) 0 0 0;
+    flex-wrap:nowrap;
+    align-items:center;
+    justify-content:center;
+    gap:calc(3*var(--u));
+  }
+  .hero-section .plogos img { margin:0; }
+  .hero-section .plogos .pl-img-1 { height:calc(37.75*var(--u)); }
+  .hero-section .plogos .pl-img-2 { height:calc(46.19*var(--u)); }
+  .hero-section .plogos .pl-img-3 { height:calc(47.66*var(--u)); }
+  .hero-section .plogos .pl-img-4 { height:calc(45.25*var(--u)); }
+  .hero-section .plogos .pl { font-size:calc(10*var(--u)); }
+
+  /* fixed art-direction crop of the shared master (portrait) */
+  .hero-section__bg video {
+    object-position:50% 100%;
+    transform:scale(1.26);
+    transform-origin:50% 100%;
+  }
+  .hero-section .hero-section__bg::before {
+    inset:auto;
+    left:50%;
+    bottom:0;
+    width:max(100%,calc(100dvh * 390 / 844));
+    height:max(100%,calc(100vw * 844 / 390));
+    background-position:50% 100%;
+    transform:translateX(-50%) scale(1.26);
+    transform-origin:50% 100%;
+  }
+  .hero-section .hero-section__bg::after {
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    background:linear-gradient(180deg,
+      rgba(4,86,140,.26) 0%,
+      rgba(4,86,140,0) 18%,
+      rgba(4,86,140,0) 40%,
+      rgba(5,90,145,.22) 62%,
+      rgba(6,94,150,.34) 100%);
+  }
+}
+
+/* ======================================================== entrance motion = */
+@media (prefers-reduced-motion: no-preference) {
+  .js-entrance .logo,
+  .js-entrance #nav a,
+  .js-entrance .head-cta,
+  .js-entrance .badge,
+  .js-entrance h1 .ln-i,
+  .js-entrance .lede,
+  .js-entrance .action,
+  .js-entrance .partner-label,
+  .js-entrance .plogos img {
+    will-change:transform,opacity;
+  }
+  .js-entrance .logo { animation:ent-rise .70s var(--e-reveal) 0s both; --rise:calc(10*var(--u)); }
+  .js-entrance #nav a:nth-child(1) { animation:ent-rise .55s var(--e-reveal) .060s both; --rise:calc(10*var(--u)); }
+  .js-entrance #nav a:nth-child(2) { animation:ent-rise .55s var(--e-reveal) .095s both; --rise:calc(10*var(--u)); }
+  .js-entrance #nav a:nth-child(3) { animation:ent-rise .55s var(--e-reveal) .130s both; --rise:calc(10*var(--u)); }
+  .js-entrance #nav a:nth-child(4) { animation:ent-rise .55s var(--e-reveal) .165s both; --rise:calc(10*var(--u)); }
+  .js-entrance #nav a:nth-child(5) { animation:ent-rise .55s var(--e-reveal) .200s both; --rise:calc(10*var(--u)); }
+  .js-entrance #nav a:nth-child(6) { animation:ent-rise .55s var(--e-reveal) .235s both; --rise:calc(10*var(--u)); }
+  .js-entrance .head-cta { animation:ent-settle .60s var(--e-settle) .18s both; }
+  .js-entrance .badge { animation:ent-rise .60s var(--e-reveal) .22s both; --rise:calc(12*var(--u)); }
+  .js-entrance h1 .ln:nth-child(1) .ln-i { animation:ent-line .95s var(--e-reveal) .34s both; }
+  .js-entrance h1 .ln:nth-child(2) .ln-i { animation:ent-line .95s var(--e-reveal) .42s both; }
+  .js-entrance h1 .ln:nth-child(3) .ln-i { animation:ent-line .95s var(--e-reveal) .50s both; }
+  .js-entrance .lede { animation:ent-rise .70s var(--e-reveal) .68s both; --rise:calc(12*var(--u)); }
+  .js-entrance .action.action-light { animation:ent-settle .60s var(--e-settle) .84s both; }
+  .js-entrance .action.action-dark { animation:ent-settle .60s var(--e-settle) .90s both; }
+  .js-entrance .partner-label { animation:ent-rise .60s var(--e-reveal) 1.00s both; --rise:calc(8*var(--u)); }
+  .js-entrance .plogos .pl-img-1 { animation:ent-rise .60s var(--e-reveal) 1.06s both; --rise:calc(8*var(--u)); }
+  .js-entrance .plogos .pl-img-2 { animation:ent-rise .60s var(--e-reveal) 1.11s both; --rise:calc(8*var(--u)); }
+  .js-entrance .plogos .pl-img-3 { animation:ent-rise .60s var(--e-reveal) 1.16s both; --rise:calc(8*var(--u)); }
+  .js-entrance .plogos .pl-img-4 { animation:ent-rise .60s var(--e-reveal) 1.21s both; --rise:calc(8*var(--u)); }
+
+  @media (max-aspect-ratio:1/1) {
+    .js-entrance h1 .ln-i { animation:none; }
+    .js-entrance h1#hero-title {
+      animation:ent-rise .75s var(--e-reveal) .34s both;
+      --rise:calc(14*var(--u));
+    }
+  }
+}
+
+@keyframes ent-line {
+  from { transform:translateY(105%); }
+  to { transform:translateY(0); }
+}
+@keyframes ent-rise {
+  from { opacity:0; transform:translateY(var(--rise)); }
+  to { opacity:1; transform:none; }
+}
+@keyframes ent-settle {
+  from { opacity:0; transform:translateY(calc(10 * var(--u))) scale(.97); }
+  to { opacity:1; transform:none; }
+}
+
+/* ==================================================== reduced motion ====== */
+@media (prefers-reduced-motion: reduce) {
+  * { transition:none !important; }
+  .hero-section__bg video { display:none; }
+  .js-entrance .logo,
+  .js-entrance #nav a,
+  .js-entrance .head-cta,
+  .js-entrance .badge,
+  .js-entrance h1 .ln-i,
+  .js-entrance h1#hero-title,
+  .js-entrance .lede,
+  .js-entrance .action,
+  .js-entrance .partner-label,
+  .js-entrance .plogos img { animation:none !important; }
+}
+</style>
+</head>
+<body>
+<section class="hero-section" aria-labelledby="hero-title">
+  <div class="hero-section__bg" id="bg">
+    <video autoplay muted loop playsinline
+      poster="assets/aerofold-paper-bloom-poster.png"
+      aria-label="Three ivory, coral, and saffron paper cranes fly across an azure sky above a gently moving sculpture of folded-paper cranes, pleats, and ribbons.">
+      <source media="(max-aspect-ratio:1/1 )"
+        src="assets/aerofold-paper-bloom-portrait.mp4" type="video/mp4">
+      <source src="assets/aerofold-paper-bloom-landscape.mp4" type="video/mp4">
+      A dense sculpture of colourful folded-paper cranes, pleats, and ribbons against an azure sky. A static image is shown when video is unavailable.
+    </video>
+  </div>
+
+  <div class="stage">
+    <header class="head">
+      <div class="logo">
+        <svg class="logo-mark" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M1 9L10 12V19Z" fill="currentColor" fill-opacity=".85"/>
+          <path d="M10 1L19 9L10 19L1 9Z" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M10 1V19M1 9L10 12" stroke="currentColor" stroke-width="1"/>
+        </svg>
+        <span>AEROFOLD</span>
+      </div>
+      <span class="sp sp-a" aria-hidden="true"></span>
+      <nav id="nav" aria-label="Main navigation">
+        <a href="#manifesto" data-preview="manifesto">Manifesto</a>
+        <a href="#practice" data-preview="practice">Practice</a>
+        <a href="#installations" data-preview="installations">Installations</a>
+        <a href="#journal" data-preview="journal">Journal</a>
+        <a href="#contact" data-preview="contact">Collaborate</a>
+        <a href="#contact" data-preview="contact">Contact</a>
+      </nav>
+      <span class="sp sp-b" aria-hidden="true"></span>
+      <a href="#contact" class="head-cta" data-preview="contact">Start a Project</a>
+      <button id="menuBtn" type="button" aria-controls="nav" aria-expanded="false" aria-label="Open menu">
+        <svg viewBox="0 0 17 12" fill="currentColor" aria-hidden="true">
+          <path d="M0 0h17v1.9H0z M0 5.05h17v1.9H0z M0 10.1h17V12H0z"/>
+        </svg>
+      </button>
+    </header>
+
+    <span class="vsp vsp-a" aria-hidden="true"></span>
+
+    <section class="hero">
+      <div class="badge">
+        <span class="chip">New</span>
+        <span class="badge-text">Folded matter, set in motion</span>
+      </div>
+      <h1 id="hero-title"><span class="ln"><span class="ln-i">We Fold Matter Into</span></span> <span class="ln"><span class="ln-i">Motion for the</span></span> <span class="ln"><span class="ln-i">Unexpected</span></span></h1>
+      <p class="lede">We bring folded paper, sculptural form, and quiet kinetic energy together to make installations that stay in motion.</p>
+      <div class="actions">
+        <a href="#contact" class="action action-light" data-preview="contact">Start a Project</a>
+        <a href="#installations" class="action action-dark" data-preview="installations">View Works</a>
+      </div>
+    </section>
+
+    <span class="vsp vsp-b" aria-hidden="true"></span>
+
+    <footer class="partners" aria-label="Selected collaborators">
+      <p class="partner-label">Selected collaborators:</p>
+      <div class="plogos" id="plogos">
+        <img class="pl-img-1" src="assets/fold-lab.png" alt="Fold Lab" width="1584" height="672" decoding="async">
+        <img class="pl-img-2" src="assets/kinetic-works.png" alt="Kinetic Works" width="1584" height="672" decoding="async">
+        <img class="pl-img-3" src="assets/material-studies.png" alt="Material Studies" width="1584" height="672" decoding="async">
+        <img class="pl-img-4" src="assets/open-skies.png" alt="Open Skies" width="1584" height="672" decoding="async">
+      </div>
+    </footer>
+  </div>
+
+  <dialog class="preview-dialog" id="previewDialog" aria-labelledby="dialogTitle" aria-describedby="dialogBody">
+    <p class="dialog-eyebrow">AEROFOLD / LOCAL PREVIEW</p>
+    <h2 id="dialogTitle">Start a Project</h2>
+    <div class="dialog-body" id="dialogBody"></div>
+    <button class="dialog-close" id="dialogClose" type="button" autofocus aria-label="Close">Close</button>
+  </dialog>
+</section>
+<!-- Append further <section> elements here; the page scrolls normally. -->
+
+<script>
+(function () {
+  "use strict";
+  var doc = document;
+  var root = doc.documentElement;
+  var bg = doc.getElementById("bg");
+  var video = bg.querySelector("video");
+  var nav = doc.getElementById("nav");
+  var menuBtn = doc.getElementById("menuBtn");
+  var dialog = doc.getElementById("previewDialog");
+  var dialogTitle = doc.getElementById("dialogTitle");
+  var dialogBody = doc.getElementById("dialogBody");
+  var dialogClose = doc.getElementById("dialogClose");
+  var mqPortrait = window.matchMedia("(max-aspect-ratio: 1/1)");
+  var mqReduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var savedTime = 0;
+  var lastActivator = null;
+  var downInsidePanel = false;
+
+  /* ---------------------------------------------------- entrance lifetime */
+  if (mqReduce.matches) {
+    root.classList.remove("js-entrance");
+  } else {
+    window.setTimeout(function () { root.classList.remove("js-entrance"); }, 2000);
+  }
+
+  /* --------------------------------------------------------- collaborators */
+  var MARKS = {
+    "fold-lab": "M3 10 10 2 19 7 12 13 5 13Z M5 13 12 19 20 11 19 7 M10 2 12 13",
+    "kinetic-works": "M2 7 8 2 14 2 8 7Z M5 13 11 8 20 8 14 13Z M9 20 15 14 21 14 15 20Z",
+    "material-studies": "M3 19 12 4 21 19 M12 4V19 M5 9 19 19 M19 9 5 19 M2 19H22",
+    "open-skies": "M12 2 20 5 12 11Z M22 12 19 20 13 12Z M12 22 4 19 12 13Z M2 12 5 4 11 12Z"
+  };
+  var plogos = doc.getElementById("plogos");
+  Array.prototype.forEach.call(plogos.querySelectorAll("img"), function (img, idx) {
+    function fail() {
+      if (img.parentNode !== plogos) { return; }
+      var name = img.getAttribute("alt");
+      var src = img.getAttribute("src") || "";
+      var key = src.split("/").pop().replace(/\.png$/, "");
+      var span = doc.createElement("span");
+      span.className = "pl pl-img-" + (idx + 1) + " pl-fallback";
+      span.setAttribute("role", "img");
+      span.setAttribute("aria-label", name);
+      span.innerHTML =
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">' +
+        '<path d="' + (MARKS[key] || MARKS["fold-lab"]) + '"></path></svg>' +
+        '<span>' + name + '</span>';
+      plogos.replaceChild(span, img);
+    }
+    img.addEventListener("error", fail);
+    if (img.complete && img.naturalWidth === 0) { fail(); }
+  });
+
+  /* ----------------------------------------------------------------- menu */
+  function menuOpen() { return nav.classList.contains("open"); }
+  function setMenu(open, focusFirst) {
+    if (open === menuOpen()) {
+      if (open && focusFirst) { focusMenuLink(0); }
+      return;
+    }
+    nav.classList.toggle("open", open);
+    menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    menuBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    if (open && focusFirst) { focusMenuLink(0); }
+  }
+  function focusMenuLink(i) {
+    var links = nav.querySelectorAll("a");
+    if (links.length) { links[i].focus(); }
+  }
+  menuBtn.addEventListener("click", function () {
+    setMenu(!menuOpen(), !menuOpen());
+    if (!menuOpen()) { menuBtn.focus(); }
+  });
+  doc.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && menuOpen() && !dialog.open) {
+      setMenu(false, false);
+      menuBtn.focus();
+    }
+  });
+  doc.addEventListener("pointerdown", function (e) {
+    if (menuOpen() && !nav.contains(e.target) && !menuBtn.contains(e.target)) {
+      setMenu(false, false);
+    }
+  });
+  nav.addEventListener("focusout", function () {
+    window.setTimeout(function () {
+      if (menuOpen() && !nav.contains(doc.activeElement) && !menuBtn.contains(doc.activeElement)) {
+        setMenu(false, false);
+      }
+    }, 0);
+  });
+
+  /* ---------------------------------------------------------------- dialog */
+  var PREVIEWS = {
+    contact: {
+      title: "Start a Project",
+      html: "This prototype previews a project conversation. No inquiry is sent."
+    },
+    installations: {
+      title: "Selected Installations",
+      html: "<ul><li>Airfold Pavilion</li><li>Tidal Pleats</li><li>Paper Canopy</li></ul>"
+    },
+    manifesto: { title: "Manifesto", html: "Folded matter can change how a space feels." },
+    practice: { title: "Practice", html: "We combine paper studies with slow mechanical movement." },
+    journal: { title: "Journal", html: "Studio notes will appear here in the full experience." }
+  };
+
+  function isVisible(el) {
+    return !!(el && el.getClientRects && el.getClientRects().length);
+  }
+
+  function openPreview(key, activator) {
+    var p = PREVIEWS[key] || PREVIEWS.contact;
+    lastActivator = activator || null;
+    dialogTitle.textContent = p.title;
+    dialogBody.innerHTML = p.html;
+    if (menuOpen()) { setMenu(false, false); }
+    if (!dialog.open) { dialog.showModal(); }
+    dialogClose.focus();
+  }
+
+  Array.prototype.forEach.call(doc.querySelectorAll("[data-preview]"), function (el) {
+    el.addEventListener("click", function (e) {
+      e.preventDefault();
+      openPreview(el.getAttribute("data-preview"), el);
+    });
+  });
+
+  dialog.addEventListener("close", function () {
+    var target = lastActivator;
+    lastActivator = null;
+    if (target && isVisible(target)) { target.focus(); return; }
+    if (target && nav.contains(target)) {
+      /* portrait nav link is hidden while the menu is closed: reopen first */
+      setMenu(true, false);
+      target.focus();
+      return;
+    }
+    if (target && !isVisible(target) && isVisible(menuBtn)) { menuBtn.focus(); return; }
+    if (isVisible(menuBtn) && !isVisible(doc.querySelector(".head-cta"))) {
+      menuBtn.focus();
+    }
+  });
+
+  dialogClose.addEventListener("click", function () { dialog.close(); });
+
+  /* focus trap (dialog contains a single focusable control plus links) */
+  dialog.addEventListener("keydown", function (e) {
+    if (e.key !== "Tab") { return; }
+    var focusables = dialog.querySelectorAll("button, a[href], [tabindex]:not([tabindex='-1'])");
+    if (!focusables.length) { return; }
+    var first = focusables[0];
+    var last = focusables[focusables.length - 1];
+    if (e.shiftKey && doc.activeElement === first) {
+      e.preventDefault(); last.focus();
+    } else if (!e.shiftKey && doc.activeElement === last) {
+      e.preventDefault(); first.focus();
+    }
+  });
+
+  /* genuine outside-backdrop click; ignore drags that began inside the panel */
+  dialog.addEventListener("pointerdown", function (e) {
+    downInsidePanel = (e.target !== dialog);
+  });
+  dialog.addEventListener("click", function (e) {
+    if (e.target === dialog && !downInsidePanel) { dialog.close(); }
+  });
+
+  /* ----------------------------------------------------------------- video */
+  video.muted = true; /* set programmatically as well as in markup */
+
+  function attemptPlayback() {
+    if (mqReduce.matches) { return; }
+    var p = video.play();
+    if (p && p.catch) { p.catch(function () { /* poster stays visible */ }); }
+  }
+
+  video.addEventListener("playing", function () {
+    bg.classList.add("is-playing");
+  });
+  video.addEventListener("error", function () {
+    bg.classList.remove("is-playing"); /* poster remains */
+  });
+  video.querySelectorAll("source").forEach(function (s) {
+    s.addEventListener("error", function () {
+      if (video.readyState <= 1) { bg.classList.remove("is-playing"); }
+    });
+  });
+
+  function showStableFirstFrame() {
+    bg.classList.remove("is-playing");
+    try {
+      video.currentTime = 0;
+    } catch (err) { /* poster remains */ }
+  }
+
+  function onOrientationChange() {
+    setMenu(false, false);
+    savedTime = video.currentTime || 0;
+    bg.classList.remove("is-playing");
+    video.pause();
+    video.load(); /* re-evaluate <source media> selection */
+  }
+
+  video.addEventListener("loadedmetadata", function () {
+    var d = video.duration;
+    if (isFinite(d) && d > 0 && savedTime > 0) {
+      try {
+        video.currentTime = savedTime % d;
+      } catch (err) {
+        showStableFirstFrame();
+      }
+    }
+    attemptPlayback();
+  });
+
+  var lastPortrait = mqPortrait.matches;
+  function checkOrientation() {
+    if (mqPortrait.matches !== lastPortrait) {
+      lastPortrait = mqPortrait.matches;
+      onOrientationChange();
+    }
+  }
+  window.addEventListener("resize", checkOrientation);
+  if (mqPortrait.addEventListener) {
+    mqPortrait.addEventListener("change", onOrientationChange);
+  } else if (mqPortrait.addListener) {
+    mqPortrait.addListener(onOrientationChange);
+  }
+
+  function applyReducedMotion() {
+    if (mqReduce.matches) {
+      video.pause();
+      bg.classList.remove("is-playing"); /* poster visible */
+    } else {
+      attemptPlayback();
+    }
+  }
+  if (mqReduce.addEventListener) {
+    mqReduce.addEventListener("change", applyReducedMotion);
+  } else if (mqReduce.addListener) {
+    mqReduce.addListener(applyReducedMotion);
+  }
+  applyReducedMotion();
+  attemptPlayback();
+})();
+</script>
+</body>
+</html>
